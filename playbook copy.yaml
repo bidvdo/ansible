@@ -1,0 +1,56 @@
+---
+- hosts: all
+  roles:
+  - role: common
+    vars:
+      apt_update_cache: true
+      apt_packages:
+      - vim
+      - net-tools
+      - sysstat
+  - role: manage-users
+    vars:
+      users:
+        - username: user01
+          name: user01
+          groups: ['sudo']
+          uid: 1007
+          home: /home/user01
+          profile: |
+            alias ll='ls -lah'
+          use_sudo: yes
+          use_sudo_nopass: yes
+          ssh_key:
+            - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCuUMuyLomeNRHF276r8uF9axTniMlqIqjJVGSN/eYTgOX8b5UMBXlAUNPGXvUM+fJMi21Aj3zmNxrZa/TQSneQp7Fvd58hRe1mSgnjhxDkgH25yAQzJmtkLh3MAVE9PoVObloEDcSPevno5+3km6R1mYnegi9DC609k5gZ68hVCiyG23PLisVDNzTl47ZHpeQld3MF1Cba8hImVzSiTv4KmCGy4ewU/cM36lbUrJnQHDqvRI8SH6RWXF9IAGG0OwOBMvaez+6+YUqdPKCXh8QX439QdHhAByx3jzdCro8Xo+m/xEZza/LE7EVetBddYst7YxvsFxbCJ6uaURMBOT0HqHd/CenJDcqPCU+IrhRLIjARTjTcNUXrQdfQwY6FqVaP41rcynHVUF43tAIHMGNYFctsknlKN4m/0vPDD9lEi5KQ+IYlAvBlFmzs0y7hbFGkFqVAE6Lk8jS3FcU9bWkJowgt6uWcwLjKPkrNVHddGQ7Gnj3lOcNYkseiMT7BK6E= hpsony@Sonys-MacBook-Pro.local"
+- hosts: redis
+  roles:
+  - role: manage-users
+    vars:
+      users:
+        - username: redis
+          name: redis
+          groups: ['sudo']
+          uid: 1008
+          home: /home/redis
+          profile: |
+            alias ll='ls -lah'
+          use_sudo: yes
+          use_sudo_nopass: yes
+          ssh_key:
+            - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCuUMuyLomeNRHF276r8uF9axTniMlqIqjJVGSN/eYTgOX8b5UMBXlAUNPGXvUM+fJMi21Aj3zmNxrZa/TQSneQp7Fvd58hRe1mSgnjhxDkgH25yAQzJmtkLh3MAVE9PoVObloEDcSPevno5+3km6R1mYnegi9DC609k5gZ68hVCiyG23PLisVDNzTl47ZHpeQld3MF1Cba8hImVzSiTv4KmCGy4ewU/cM36lbUrJnQHDqvRI8SH6RWXF9IAGG0OwOBMvaez+6+YUqdPKCXh8QX439QdHhAByx3jzdCro8Xo+m/xEZza/LE7EVetBddYst7YxvsFxbCJ6uaURMBOT0HqHd/CenJDcqPCU+IrhRLIjARTjTcNUXrQdfQwY6FqVaP41rcynHVUF43tAIHMGNYFctsknlKN4m/0vPDD9lEi5KQ+IYlAvBlFmzs0y7hbFGkFqVAE6Lk8jS3FcU9bWkJowgt6uWcwLjKPkrNVHddGQ7Gnj3lOcNYkseiMT7BK6E= hpsony@Sonys-MacBook-Pro.local"
+- hosts: web
+  roles:
+  - role: manage-users
+    vars:
+      users:
+        - username: nginx
+          name: nginx
+          groups: ['sudo']
+          uid: 1008
+          home: /home/nginx
+          profile: |
+            alias ll='ls -lah'
+          use_sudo: yes
+          use_sudo_nopass: yes
+          ssh_key:
+            - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCuUMuyLomeNRHF276r8uF9axTniMlqIqjJVGSN/eYTgOX8b5UMBXlAUNPGXvUM+fJMi21Aj3zmNxrZa/TQSneQp7Fvd58hRe1mSgnjhxDkgH25yAQzJmtkLh3MAVE9PoVObloEDcSPevno5+3km6R1mYnegi9DC609k5gZ68hVCiyG23PLisVDNzTl47ZHpeQld3MF1Cba8hImVzSiTv4KmCGy4ewU/cM36lbUrJnQHDqvRI8SH6RWXF9IAGG0OwOBMvaez+6+YUqdPKCXh8QX439QdHhAByx3jzdCro8Xo+m/xEZza/LE7EVetBddYst7YxvsFxbCJ6uaURMBOT0HqHd/CenJDcqPCU+IrhRLIjARTjTcNUXrQdfQwY6FqVaP41rcynHVUF43tAIHMGNYFctsknlKN4m/0vPDD9lEi5KQ+IYlAvBlFmzs0y7hbFGkFqVAE6Lk8jS3FcU9bWkJowgt6uWcwLjKPkrNVHddGQ7Gnj3lOcNYkseiMT7BK6E= hpsony@Sonys-MacBook-Pro.local"

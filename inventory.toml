@@ -1,0 +1,13 @@
+[all:vars]
+ansible_user=ubuntu
+ansible_port=22
+
+[all]
+web01              ansible_host=172.31.25.31
+redis01            ansible_host=172.31.18.236
+
+[redis]
+redis01
+
+[web]
+web01
